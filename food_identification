@@ -23,7 +23,7 @@ from keras.preprocessing.image import load_img, img_to_array,array_to_img,ImageD
 from tensorflow.keras.optimizers import RMSprop
 from tensorflow.keras.utils import to_categorical
 
-#Import food
+#Import data food
 monan = ['banhmi','banhxeo','bunrieu', 'chaca', 'pho', 'thitkhotau'] 
 
 dir_train = '/content/drive/MyDrive/data/monan/' 
@@ -34,7 +34,7 @@ x_train = []
 x_test = []
 y_test = []
 
-# Tạo dữ liệu
+#Create data
 def create_data(dir, x_train, y_train):
   for i in monan:
     path = os.path.join(dir,i)
@@ -51,7 +51,7 @@ def create_data(dir, x_train, y_train):
 
 create_data(dir_train, x_train, y_train) #tạo dữ liệu 
 
-# xử lí dữ liệu
+#Data processing
 x_train = np.array(x_train)
 y_train = np.array(y_train)
 y_train = np_utils.to_categorical(y_train, 10)
@@ -80,3 +80,14 @@ model.summary()
 
 model.compile(loss='categorical_crossentropy', optimizer=RMSprop(), metrics=['accuracy'])
 
+#Training
+history = model.fit(x_train,y_train,epochs = 50)
+
+#Pre image and predict
+pic = image.load_img('/content/pho001.jpg', target_size=(360,640))
+plt.imshow(pic)
+pic = img_to_array(pic)
+pic = pic.reshape(1,360,640,3) 
+pic = pic.astype('float32')
+pic = pic/255
+np.argmax(model.predict(pic), axis=1)

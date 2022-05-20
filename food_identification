@@ -41,7 +41,7 @@ def create_data(dir, x_train, y_train):
     index_label = monan.index(i)
     for j in os.listdir(path):
       img_path = os.path.join(path, j)
-      img = image.load_img(img_path, target_size=(360,640)) # độ phân giải 
+      img = image.load_img(img_path, target_size=(360,640))
       img = img_to_array(img)
       img = img.reshape(360,640,3) 
       img = img.astype('float32')
@@ -49,7 +49,7 @@ def create_data(dir, x_train, y_train):
       x_train.append(img)
       y_train.append(index_label)
 
-create_data(dir_train, x_train, y_train) #tạo dữ liệu 
+create_data(dir_train, x_train, y_train)
 
 #Data processing
 x_train = np.array(x_train)

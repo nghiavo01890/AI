@@ -1,4 +1,5 @@
 #Link du lieu GG Drive: https://drive.google.com/drive/folders/1VAk8fmSjRJiSle4PTbmK6NfD78G8ja0_?usp=sharing
+#Ti le chinh xac 49,58%
 
 from google.colab import drive
 drive.mount('/content/drive')

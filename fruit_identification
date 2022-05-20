@@ -84,7 +84,7 @@ model.compile(loss='categorical_crossentropy', optimizer=RMSprop(), metrics=['ac
 history = model.fit(x_train,y_train,epochs = 50)
 
 #Pre image and predict
-pic = image.load_img('/content/kiwi.jpg'', target_size=(360,640))
+pic = image.load_img('/content/kiwi.jpg', target_size=(360,640))
 plt.imshow(pic)
 pic = img_to_array(pic)
 pic = pic.reshape(1,360,640,3) 
